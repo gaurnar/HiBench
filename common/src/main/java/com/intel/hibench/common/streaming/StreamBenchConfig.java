@@ -89,6 +89,13 @@ public class StreamBenchConfig {
   public static String FLINK_CHECKPOINTDURATION = "hibench.streambench.flink.checkpointDuration";
 
   // ======================================
+  // Flink Identity Benchmark Conf
+  // ======================================
+  public static String FLINK_IDENTITY_SOURCE_PARALLELISM = "hibench.streambench.flink.identity.sourceParallelism";
+
+  public static String FLINK_IDENTITY_MAP_PARALLELISM = "hibench.streambench.flink.identity.mapParallelism";
+
+  // ======================================
   // Storm Related Conf
   // ======================================
   public static String STORM_WORKERCOUNT = "hibench.streambench.storm.worker_count";

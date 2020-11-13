@@ -64,6 +64,11 @@ public class RunBench {
       WordCount wordCount = new WordCount();
       wordCount.processStream(conf);
     } else if (testCase.equals("identity")) {
+      conf.identitySourceParallelism = Integer.parseInt(
+              cl.getProperty(StreamBenchConfig.FLINK_IDENTITY_SOURCE_PARALLELISM));
+      conf.identityMapParallelism = Integer.parseInt(
+              cl.getProperty(StreamBenchConfig.FLINK_IDENTITY_MAP_PARALLELISM));
+
       Identity identity = new Identity();
       identity.processStream(conf);
     } else if (testCase.equals("repartition")) {

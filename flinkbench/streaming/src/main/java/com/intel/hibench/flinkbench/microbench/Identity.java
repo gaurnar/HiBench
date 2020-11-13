@@ -36,7 +36,8 @@ public class Identity extends StreamBase {
     env.setBufferTimeout(config.bufferTimeout);
 
     createDataStream(config);
-    DataStream<Tuple2<String, String>> dataStream = env.addSource(getDataStream());
+    DataStream<Tuple2<String, String>> dataStream = env.addSource(getDataStream())
+            .setParallelism(config.identitySourceParallelism);
 
     dataStream.map(new MapFunction<Tuple2<String, String>, Tuple2<String, String>>() {
 
@@ -47,7 +48,7 @@ public class Identity extends StreamBase {
         kafkaReporter.report(Long.parseLong(value.f0), System.currentTimeMillis());
         return value;
       }
-    });
+    }).setParallelism(config.identityMapParallelism);
 
     env.execute("Identity Job");
   }

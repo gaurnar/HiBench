@@ -41,4 +41,7 @@ public class FlinkBenchConfig implements Serializable {
   public long bufferTimeout;
   public long checkpointDuration;
 
+  // Identity benchmark
+  public int identitySourceParallelism;
+  public int identityMapParallelism;
 }
