@@ -44,7 +44,7 @@ public abstract class StreamBase {
 
     this.dataStream = new FlinkKafkaConsumer08<Tuple2<String, String>>(
         config.topic,
-        new KeyedTupleSchema(),
+        new KeyedTupleSchema(config.topic),
         properties);
   }
 

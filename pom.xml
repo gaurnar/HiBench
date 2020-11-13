@@ -11,8 +11,8 @@
   <url>http://maven.apache.org</url>
 
   <properties>
-    <maven.compiler.source>1.6</maven.compiler.source>
-    <maven.compiler.target>1.6</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
     <encoding>UTF-8</encoding>
     <scala.version>2.10.4</scala.version>
     <scala.binary.version>2.10</scala.binary.version>
@@ -224,6 +224,44 @@
         <property>
           <name>hadoop</name>
           <value>3.0</value>
+        </property>
+      </activation>
+    </profile>
+
+    <profile>
+      <id>defaultflink</id>
+      <properties>
+        <flinkVersion>1.0.3</flinkVersion>
+      </properties>
+      <activation>
+        <property>
+          <name>!flink</name>
+        </property>
+      </activation>
+    </profile>
+
+    <profile>
+      <id>flink1.0</id>
+      <properties>
+        <flinkVersion>1.0.3</flinkVersion>
+      </properties>
+      <activation>
+        <property>
+          <name>flink</name>
+          <value>1.0</value>
+        </property>
+      </activation>
+    </profile>
+
+    <profile>
+      <id>flink1.10</id>
+      <properties>
+        <flinkVersion>1.10.0</flinkVersion>
+      </properties>
+      <activation>
+        <property>
+          <name>flink</name>
+          <value>1.10</value>
         </property>
       </activation>
     </profile>

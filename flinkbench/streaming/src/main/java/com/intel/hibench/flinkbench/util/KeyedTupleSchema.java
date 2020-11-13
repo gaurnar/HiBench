@@ -10,6 +10,11 @@ import org.apache.flink.streaming.util.serialization.KeyedSerializationSchema;
 import java.io.IOException;
 
 public class KeyedTupleSchema implements KeyedSerializationSchema<Tuple2<String, String>>, KeyedDeserializationSchema<Tuple2<String, String>> {
+  private final String topic;
+
+  public KeyedTupleSchema(String topic) {
+    this.topic = topic;
+  }
 
   @Override
   public byte[] serializeKey(Tuple2<String, String> element) {
@@ -19,6 +24,11 @@ public class KeyedTupleSchema implements KeyedSerializationSchema<Tuple2<String,
   @Override
   public byte[] serializeValue(Tuple2<String, String> element) {
     return element.f1.getBytes();
+  }
+
+  @Override
+  public String getTargetTopic(Tuple2<String, String> element) {
+    return topic;
   }
 
   @Override
